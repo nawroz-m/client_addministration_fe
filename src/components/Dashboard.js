@@ -11,7 +11,8 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import axios from "axios";
 import { LOCALSTORAGECONSTANT } from "../constant/constant";
-import { IconButton, InputBase } from "@mui/material";
+import { Button, IconButton, InputBase } from "@mui/material";
+import EditModel from "./EditModel";
 
 const columns = [
   { id: "firstname", label: "First Name", align: "left" },
@@ -49,6 +50,11 @@ const columns = [
   {
     id: "telephone",
     label: "Telephone",
+    align: "right",
+  },
+  {
+    id: "edit",
+    label: "Action",
     align: "right",
   },
 ];
@@ -103,7 +109,7 @@ export default function Dashboard() {
   }, [page, rowsPerPage, search]);
   return (
     <Paper sx={{ width: "100%" }}>
-      <TableContainer sx={{ maxHeight: 640 }}>
+      <TableContainer sx={{ maxHeight: 740 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -157,6 +163,10 @@ export default function Dashboard() {
                     {row.postaladdress.country}
                   </TableCell>
                   <TableCell align="right">{row.telephone}</TableCell>
+
+                  <TableCell align="right">
+                    <EditModel userInfo={row} />
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>

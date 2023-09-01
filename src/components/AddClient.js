@@ -36,7 +36,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function AddClient() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [firstname, setFirstname] = useState(null);
@@ -70,7 +70,6 @@ export default function SignUp() {
         postalcode: parseInt(postalcode),
       },
     };
-    console.log({ userInfo });
     const response = await axios.post(
       "http://localhost:8090/api/register",
       userInfo
@@ -99,7 +98,7 @@ export default function SignUp() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign Up
+              Add Client
             </Typography>
             <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField

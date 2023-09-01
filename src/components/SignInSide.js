@@ -36,14 +36,11 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const nav = useNavigate();
 
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
@@ -71,6 +68,13 @@ export default function SignInSide() {
     }
     window.location.replace("/");
   };
+
+  if (
+    localStorage.getItem(LOCALSTORAGECONSTANT.ACCESSTOKEN) &&
+    localStorage.getItem(LOCALSTORAGECONSTANT.ROLE)
+  ) {
+    window.location.replace("/");
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -152,8 +156,8 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link href="/addclient" variant="body2">
+                    {"Want to add new client"}
                   </Link>
                 </Grid>
               </Grid>
